@@ -1,8 +1,9 @@
 VENV   ?= .venv
 PYTHON ?= $(if $(wildcard $(VENV)/bin/python),$(VENV)/bin/python,python3)
 ULOG   ?= data/20261027-sitl-hover.ulg
+HOVER  ?= 25
 
-.PHONY: report test test-hover test-safety test-all repro sitl help
+.PHONY: report test test-hover test-safety test-all repro campaign campaign-replay sitl help
 
 ## report: 给一条飞行日志出人读的体检报告
 report:
@@ -29,9 +30,17 @@ test-all:
 repro:
 	$(PYTHON) scripts/negative_check.py
 
-## sitl: SITL 自动飞行流水线（M4）
+## sitl: 手动启动 PX4 SITL（调试用，正常请用 make campaign）
 sitl:
-	@echo "[M4] MAVSDK-Python 自动飞行尚未实现，规划见 README 里程碑"
+	cd ~/PX4/px4/build/px4_sitl_default && PX4_SIM_MODEL=sihsim_quadx ./bin/px4
+
+## campaign: 无人值守飞行测试流水线 —— 起 SITL → 飞 → 取日志 → 跑用例 → 出报告
+campaign:
+	$(PYTHON) scripts/run_campaign.py --live --hover $(HOVER)
+
+## campaign-replay: 不飞，用已有日志跑下游全链路（CI 上跑的就是这个）
+campaign-replay:
+	$(PYTHON) scripts/run_campaign.py --replay $(ULOG)
 
 ## help: 显示可用命令
 help:

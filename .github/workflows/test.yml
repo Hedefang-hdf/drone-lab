@@ -103,3 +103,48 @@ jobs:
           echo '```' >> "$GITHUB_STEP_SUMMARY"
           cat negative-check.txt >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || echo "(无输出)"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+  # ── 任务三：流水线全链路（replay 模式） ─────────────────
+  # 飞行部分依赖仿真环境，CI 上跑不动；但"取数 → 测量 → 用例 → 报告"
+  # 是纯计算，必须每次提交都验。replay 模式让这条链路在任何机器上秒级回归。
+  campaign-replay:
+    name: 流水线全链路（replay）
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run pipeline in replay mode
+        run: python scripts/run_campaign.py --replay data/20261027-sitl-hover.ulg --out campaigns/ci
+
+      - name: Assert pipeline verdict
+        run: |
+          python - <<'PY'
+          import json, sys
+          m = json.load(open("campaigns/ci/manifest.json"))
+          print("verdict:", m["verdict"], "| stages:", len(m["stages"]),
+                "| tests:", m["tests"]["passed"], "passed /", m["tests"]["failed"], "failed")
+          if m["verdict"] != "PASS":
+              sys.exit("流水线判定不是 PASS，检查报告 campaigns/ci/report.html")
+          PY
+
+      - name: Upload campaign artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: campaign-report
+          path: |
+            campaigns/ci/report.html
+            campaigns/ci/manifest.json
+            campaigns/ci/junit.xml
+          retention-days: 30

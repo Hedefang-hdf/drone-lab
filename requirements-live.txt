@@ -1,0 +1,3 @@
+# 飞行科目依赖（--live 模式需要，replay/用例/报告不需要）
+# 安装：pip install -r requirements-live.txt
+mavsdk-grpc>=3.17     # MAVSDK gRPC 绑定（经典 API，mavsdk>=4 已换成不兼容的原生绑定）

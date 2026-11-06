@@ -41,6 +41,7 @@ class Thresholds:
     hover_min_alt_m: float = 0.8    # 高于此值视为"在空中"
     hover_max_vz_ms: float = 0.3    # 垂直速度小于此值视为"稳定悬停"
     hover_min_samples: int = 10     # 悬停段最少采样点
+    settle_skip_s: float = 5.0      # 跳过悬停窗口开头的收敛段再判读
 
     # 日志完整性：判读所需的必备 topic
     required_topics: tuple = (
@@ -148,7 +149,17 @@ class FlightData:
             return None
 
         ts = pos.data["timestamp"]
-        self._window = (int(ts[mask][0]), int(ts[mask][-1]))
+        w0, w1 = int(ts[mask][0]), int(ts[mask][-1])
+
+        # 跳过收敛段：从进入悬停到定高收敛有约 4s 的调整过程（高度从目标下方
+        # 单调爬到设定值）。不跳过的话，这段"收敛"会被算进高度漂移——
+        # 实测 SIH 机型曾因此把 0.03m 的稳态漂移误报成 0.51m（见 docs/ulog-判读.md）。
+        w0 += int(self.th.settle_skip_s * 1e6)
+        keep = (ts >= w0) & (ts <= w1)
+        if int(keep.sum()) < self.th.hover_min_samples:
+            return None
+
+        self._window = (w0, w1)
         return self._window
 
     def in_window(self, ts) -> list[bool]:

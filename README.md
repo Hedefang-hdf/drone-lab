@@ -17,7 +17,7 @@
 | [`gotools/`](gotools/) | Go 工具：ulog → HTML 报告站（规划中，M3） |
 | [`docs/`](docs/) | 学习笔记 + 设计说明：SITL 踩坑、PID 原理、日志判读、pytest 设计 |
 | [`data/`](data/) | 真实飞行日志样例（PX4 SITL 悬停，36 秒） |
-| [`scripts/`](scripts/) | 负向验证脚本：证明测试用例本身有效 |
+| [`scripts/`](scripts/) | 编排器：无人值守飞行测试流水线 `run_campaign.py` + 负向验证脚本 |
 
 ## 快速开始
 
@@ -34,6 +34,9 @@ make report ULOG=data/20261027-sitl-hover.ulg
 
 # 4. 验证用例本身有效（收紧阈值，看是否翻转成 FAIL）
 make repro
+
+# 5. 无人值守飞行测试：起 SITL → 自动飞 → 取日志 → 跑用例 → 出报告
+make campaign                 # 需要 PX4 SITL + mavsdk-grpc，见 docs/自动化飞行测试流水线.md
 ```
 
 ## 核心设计：测量与判定分离
@@ -93,8 +96,8 @@ make repro
 - [x] **M1** 仓库初始化：日志体检工具 `ulog_report.py` + 真实样例日志
 - [x] **M2** 飞行测试用例库：5 组 pytest 用例 + 数据层重构 + 负向验证 → **飞行的回归测试**
 - [x] **M2.1** CI 接入：GitHub Actions 三版本矩阵跑用例 + 负向验证守护断言有效性（[看运行记录](https://github.com/Hedefang-hdf/drone-lab/actions/workflows/test.yml)）
+- [x] **M4** SITL 自动化流水线：MAVSDK 起飞 → 悬停 → 降落 → 取日志 → 跑用例 → 出 HTML 报告（[设计说明](docs/自动化飞行测试流水线.md)，含首航抓出的 4 个真问题）
 - [ ] **M3** Go 工具 `ulog2html`：一条命令把 .ulg 转成可读的 HTML 报告站
-- [ ] **M4** SITL 自动化流水线：MAVSDK-Python 自动起飞 → 悬停 → 降落 → 取日志 → 跑用例 → 出报告
 
 ## 学习路线
 
@@ -102,7 +105,7 @@ make repro
 2. **日志与数据分析** — .ulg 结构、pyulog、判读标准（[判读方法](docs/ulog-判读.md)）
 3. **控制原理** — PID 四环串级（[笔记](docs/pid-四环串级.md)）
 4. **飞行测试用例设计** — 从需求到用例到判读到报告闭环（[设计说明](docs/pytest-飞行回归测试.md)）
-5. **自动化** — MAVSDK 脚本化飞行测试（M4）
+5. **自动化** — MAVSDK 脚本化飞行、安全包络、无人值守流水线（[流水线设计](docs/自动化飞行测试流水线.md)）
 
 ## 环境说明
 
