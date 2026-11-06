@@ -3,7 +3,7 @@ PYTHON ?= $(if $(wildcard $(VENV)/bin/python),$(VENV)/bin/python,python3)
 ULOG   ?= data/20261027-sitl-hover.ulg
 HOVER  ?= 25
 
-.PHONY: report test test-hover test-safety test-all repro campaign campaign-replay sitl help
+.PHONY: report test test-hover test-safety test-all repro campaign campaign-replay sitl ulog2html test-go help
 
 ## report: 给一条飞行日志出人读的体检报告
 report:
@@ -41,6 +41,15 @@ campaign:
 ## campaign-replay: 不飞，用已有日志跑下游全链路（CI 上跑的就是这个）
 campaign-replay:
 	$(PYTHON) scripts/run_campaign.py --replay $(ULOG)
+
+## ulog2html: Go 版报告生成器 —— 纯 Go 解析 .ulg，出单文件 HTML（零依赖二进制）
+ulog2html:
+	cd gotools && go build -o bin/ulog2html ./cmd/ulog2html
+	cd gotools && ./bin/ulog2html ../$(ULOG) -o ../reports/$(basename $(notdir $(ULOG))).html
+
+## test-go: 跑 Go 单元测试（含与 Python 侧数值基准的交叉验证）
+test-go:
+	cd gotools && go test ./...
 
 ## help: 显示可用命令
 help:

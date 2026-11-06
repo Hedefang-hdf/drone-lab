@@ -14,7 +14,7 @@
 |---|---|
 | [`flytests/`](flytests/) | **飞行测试用例库**：5 组 TC 用例，pytest 断言 = 飞行的回归测试 |
 | [`pytools/`](pytools/) | 日志数据层（`flightdata.py`）+ 体检报告生成（`ulog_report.py`） |
-| [`gotools/`](gotools/) | Go 工具：ulog → HTML 报告站（规划中，M3） |
+| [`gotools/`](gotools/) | **Go 工具**：纯 Go 解析 .ulg → 单文件 HTML 报告（零依赖二进制，见 [`docs/ulog-二进制格式-Go实现.md`](docs/ulog-二进制格式-Go实现.md)） |
 | [`docs/`](docs/) | 学习笔记 + 设计说明：SITL 踩坑、PID 原理、日志判读、pytest 设计 |
 | [`data/`](data/) | 真实飞行日志样例（PX4 SITL 悬停，36 秒） |
 | [`scripts/`](scripts/) | 编排器：无人值守飞行测试流水线 `run_campaign.py` + 负向验证脚本 |
@@ -37,6 +37,10 @@ make repro
 
 # 5. 无人值守飞行测试：起 SITL → 自动飞 → 取日志 → 跑用例 → 出报告
 make campaign                 # 需要 PX4 SITL + mavsdk-grpc，见 docs/自动化飞行测试流水线.md
+
+# 6. Go 版报告生成器：纯 Go 解析 .ulg，出一个带曲线的单文件 HTML
+make ulog2html                # 产物在 reports/
+make test-go                  # Go 单测（含与 Python 数值基准的交叉验证）
 ```
 
 ## 核心设计：测量与判定分离
@@ -97,7 +101,7 @@ make campaign                 # 需要 PX4 SITL + mavsdk-grpc，见 docs/自动�
 - [x] **M2** 飞行测试用例库：5 组 pytest 用例 + 数据层重构 + 负向验证 → **飞行的回归测试**
 - [x] **M2.1** CI 接入：GitHub Actions 三版本矩阵跑用例 + 负向验证守护断言有效性（[看运行记录](https://github.com/Hedefang-hdf/drone-lab/actions/workflows/test.yml)）
 - [x] **M4** SITL 自动化流水线：MAVSDK 起飞 → 悬停 → 降落 → 取日志 → 跑用例 → 出 HTML 报告（[设计说明](docs/自动化飞行测试流水线.md)，含首航抓出的 4 个真问题）
-- [ ] **M3** Go 工具 `ulog2html`：一条命令把 .ulg 转成可读的 HTML 报告站
+- [x] **M3** Go 工具 `ulog2html`：**纯 Go** 解析 `.ulg` 二进制 → 单文件 HTML 报告（含 SVG 曲线）。与 Python 侧双实现交叉验证，同一份日志 9 项指标逐位一致（[协议踩坑记录](docs/ulog-二进制格式-Go实现.md)）
 
 ## 学习路线
 

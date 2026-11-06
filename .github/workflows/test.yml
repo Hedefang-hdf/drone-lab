@@ -148,3 +148,38 @@ jobs:
             campaigns/ci/manifest.json
             campaigns/ci/junit.xml
           retention-days: 30
+
+  # ── 任务四：Go 版 ulog2html ──────────────────────────────
+  # 纯 Go 实现的 ULog 解析器 + 报告生成器。单测里钉着与 Python 侧一致的数值基准，
+  # 两边独立实现算同一份日志必须对得上——这是"协议理解正确"的交叉验证。
+  go-report:
+    name: ulog2html（Go）
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Build
+        working-directory: gotools
+        run: go build ./...
+
+      - name: Test (含与 Python 数值基准的交叉验证)
+        working-directory: gotools
+        run: go test ./... -v
+
+      - name: Generate HTML report from sample log
+        working-directory: gotools
+        run: |
+          go build -o bin/ulog2html ./cmd/ulog2html
+          ./bin/ulog2html ../data/20261027-sitl-hover.ulg -o ../reports/ulog2html.html
+
+      - name: Upload Go report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ulog2html-report
+          path: reports/ulog2html.html
+          retention-days: 30

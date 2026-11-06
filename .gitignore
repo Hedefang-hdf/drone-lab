@@ -17,3 +17,6 @@ campaigns/
 # 日志原始副本（入库的 data/ 样例除外）
 *.ulg
 !data/*.ulg
+
+# Go 构建产物
+gotools/bin/
