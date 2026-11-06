@@ -1,5 +1,9 @@
 # drone-lab · 无人机测试实验室
 
+[![flight-tests](https://github.com/Hedefang-hdf/drone-lab/actions/workflows/test.yml/badge.svg)](https://github.com/Hedefang-hdf/drone-lab/actions/workflows/test.yml)
+[![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://github.com/Hedefang-hdf/drone-lab/blob/main/requirements.txt)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 > 用软件测试的方法学无人机：SITL 实验、飞行测试用例、日志判读工具、自动化报告。
 
 这是一个无人机测试工程师的成长实验室。我把七年软件测试的工程习惯——用例化、工具化、自动化、报告化——应用到了无人机领域：**每一次仿真飞行都有测试用例，每一条飞行日志都有体检报告，每一个判读标准都写成了断言。**
