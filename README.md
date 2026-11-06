@@ -92,6 +92,7 @@ make repro
 
 - [x] **M1** 仓库初始化：日志体检工具 `ulog_report.py` + 真实样例日志
 - [x] **M2** 飞行测试用例库：5 组 pytest 用例 + 数据层重构 + 负向验证 → **飞行的回归测试**
+- [x] **M2.1** CI 接入：GitHub Actions 三版本矩阵跑用例 + 负向验证守护断言有效性（[看运行记录](https://github.com/Hedefang-hdf/drone-lab/actions/workflows/test.yml)）
 - [ ] **M3** Go 工具 `ulog2html`：一条命令把 .ulg 转成可读的 HTML 报告站
 - [ ] **M4** SITL 自动化流水线：MAVSDK-Python 自动起飞 → 悬停 → 降落 → 取日志 → 跑用例 → 出报告
 
