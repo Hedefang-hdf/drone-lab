@@ -1,0 +1,277 @@
+{
+  "campaign_id": "20261106-180830-live",
+  "mode": "live",
+  "started_at": "2026-11-06 18:08:30",
+  "git": {
+    "sha": "bbaeb44",
+    "dirty": true
+  },
+  "env": {
+    "python": "3.13.12",
+    "platform": "Darwin arm64",
+    "mavsdk": "4.0.5",
+    "pytest": "9.2.0"
+  },
+  "sitl_model": "sihsim_quadx",
+  "verdict": "FAIL",
+  "exit_code": 1,
+  "finished_at": "2026-11-06 18:09:18",
+  "mission": {
+    "ok": true,
+    "abort_reason": null,
+    "preflight": [
+      {
+        "name": "科目参数",
+        "ok": true,
+        "detail": "目标高度 2.5m，包络上限 5.0m"
+      },
+      {
+        "name": "可解锁",
+        "ok": true,
+        "detail": "is_armable=True"
+      },
+      {
+        "name": "位置估计",
+        "ok": true,
+        "detail": "local_position_ok=True"
+      },
+      {
+        "name": "Home 点",
+        "ok": true,
+        "detail": "home_position_ok=True"
+      },
+      {
+        "name": "电量",
+        "ok": true,
+        "detail": "飞控未上报电量（仿真常见），跳过"
+      },
+      {
+        "name": "飞行模式",
+        "ok": true,
+        "detail": "当前 HOLD"
+      }
+    ],
+    "takeoff_ok": true,
+    "land_ok": true,
+    "hover_target_s": 25.0,
+    "hover_actual_s": 25.1,
+    "samples": 50,
+    "max_alt_m": 2.51,
+    "max_radius_m": 0.06,
+    "duration_s": 39.5,
+    "events": [
+      "已连接 udpin://0.0.0.0:14540",
+      "前置检查 科目参数: PASS (目标高度 2.5m，包络上限 5.0m)",
+      "前置检查 可解锁: PASS (is_armable=True)",
+      "前置检查 位置估计: PASS (local_position_ok=True)",
+      "前置检查 Home 点: PASS (home_position_ok=True)",
+      "前置检查 电量: PASS (飞控未上报电量（仿真常见），跳过)",
+      "前置检查 飞行模式: PASS (当前 HOLD)",
+      "[飞控] Armed by external command\t",
+      "已解锁",
+      "[飞控] [logger] ./fs/log/2026-11-06/10_08_37.ulg\t",
+      "[飞控] Using default takeoff altitude: 2.5 m\t",
+      "[飞控] Takeoff detected\t",
+      "已离地，目标 2.5m",
+      "[飞控] Landing at current position\t",
+      "[飞控] Landing detected\t",
+      "已落地",
+      "[飞控] Disarmed by external command\t"
+    ]
+  },
+  "log": {
+    "path": "campaigns/20261106-180830-live/flight.ulg",
+    "size_mb": 7.7,
+    "sha256": "816f08fdd3520852"
+  },
+  "metrics": {
+    "duration_s": 34.2,
+    "hover_found": true,
+    "hover_s": 17.2,
+    "hover_samples": 2154,
+    "roll_half_deg": 0.34,
+    "pitch_half_deg": 0.35,
+    "alt_drift_m": 0.5120000243186951,
+    "alt_mean_m": 2.450000047683716,
+    "throttle_mean": 0.4894999861717224,
+    "throttle_peak": 0.5058000087738037,
+    "gyro_peak_dps": 1.95,
+    "errors": [],
+    "warnings": [
+      "[logger] No log directories found to clean up"
+    ]
+  },
+  "checks": [
+    {
+      "name": "姿态稳定性",
+      "verdict": "PASS",
+      "detail": "roll ±0.34° pitch ±0.35° / 标准 ±1°"
+    },
+    {
+      "name": "高度保持",
+      "verdict": "FAIL",
+      "detail": "漂移 0.51 m（均高 2.45 m）/ 标准 0.5 m"
+    },
+    {
+      "name": "悬停油门",
+      "verdict": "PASS",
+      "detail": "均值 49.0% 峰值 50.6% / 标准 45%~55%"
+    },
+    {
+      "name": "振动水平",
+      "verdict": "PASS",
+      "detail": "角速度峰值 2.0 °/s / 标准 30 °/s"
+    },
+    {
+      "name": "系统消息",
+      "verdict": "PASS",
+      "detail": "ERROR 0 个 / WARNING 1 个"
+    }
+  ],
+  "tests": {
+    "total": 15,
+    "passed": 13,
+    "failed": 1,
+    "skipped": 1,
+    "duration_s": 0.74,
+    "cases": [
+      {
+        "name": "test_tc001_hover_stability::test_hover_segment_exists[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.15,
+        "message": ""
+      },
+      {
+        "name": "test_tc001_hover_stability::test_roll_stability[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc001_hover_stability::test_pitch_stability[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc001_hover_stability::test_altitude_hold[flight]",
+        "outcome": "FAIL",
+        "duration_s": 0.0,
+        "message": "AssertionError: /Users/dafangwei/code/drone-lab/campaigns/20261106-180830-live/flight.ulg: 高度漂移 0.51 m（均高 2.45 m），超出标准 0.5 m。排查方向：气压计受气流干扰、定高环 I 过大导致过冲、或地效区悬停。\nassert np.float32(0.51174927) <= 0.5\n[+2 more lines; full report in element text]"
+      },
+      {
+        "name": "test_tc002_throttle::test_throttle_in_range[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc002_throttle::test_throttle_peak_headroom[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc002_throttle::test_throttle_steady[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc003_vibration::test_gyro_peak[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc003_vibration::test_gyro_not_oscillating[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc004_sysmsg::test_no_error_messages[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc004_sysmsg::test_warnings_are_tracked[flight]",
+        "outcome": "SKIP",
+        "duration_s": 0.0,
+        "message": "记录 1 条 WARNING（不判失败）：['[logger] No log directories found to clean up']"
+      },
+      {
+        "name": "test_tc005_log_integrity::test_required_topics_present[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc005_log_integrity::test_log_duration[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc005_log_integrity::test_attitude_sample_rate[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc005_log_integrity::test_timestamps_monotonic[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      }
+    ],
+    "exit_code": 1
+  },
+  "stages": [
+    {
+      "name": "启动 SITL",
+      "status": "OK",
+      "duration_s": 4.893,
+      "detail": "sihsim_quadx @ px4_sitl_default，4.8s 就绪"
+    },
+    {
+      "name": "飞行科目",
+      "status": "OK",
+      "duration_s": 39.485,
+      "detail": "起飞 2.5m / 悬停 25.0s"
+    },
+    {
+      "name": "停止 SITL",
+      "status": "OK",
+      "duration_s": 0.004,
+      "detail": ""
+    },
+    {
+      "name": "取本次日志",
+      "status": "OK",
+      "duration_s": 0.065,
+      "detail": ""
+    },
+    {
+      "name": "日志测量",
+      "status": "OK",
+      "duration_s": 0.151,
+      "detail": ""
+    },
+    {
+      "name": "执行测试用例",
+      "status": "OK",
+      "duration_s": 3.049,
+      "detail": ""
+    },
+    {
+      "name": "生成报告",
+      "status": "OK",
+      "duration_s": 0.025,
+      "detail": ""
+    }
+  ],
+  "advice": "<div style='margin-bottom:8px'><b>高度保持</b>：定高漂移先排除气压计/激光测距噪声，再看 MPC_Z 系列参数；若在室内仿真，确认 EKF 高度源与实际一致。</div><div style='margin-bottom:8px'><b>用例失败</b>：报告用例明细里的失败信息已附排查方向，先按方向定位，再决定是改代码还是改标准。</div>",
+  "abort_reason": null
+}

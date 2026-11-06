@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>飞行测试报告 · 20261106-180830-live</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#1b1f24; --muted:#6a737d; --line:#e3e6ea;
+  --pass:#1a7f37; --pass-bg:#e9f6ec; --fail:#c9252d; --fail-bg:#fdeceb;
+  --skip:#8a6d00; --skip-bg:#fdf5d9; --accent:#0b5cad; --accent-bg:#eaf2fc;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.6 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;}
+.wrap{max-width:1000px;margin:0 auto;padding:32px 24px 64px}
+h1{font-size:24px;margin:0 0 4px;letter-spacing:-.2px}
+h2{font-size:16px;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line);color:var(--ink)}
+.sub{color:var(--muted);font-size:13px;font-family:var(--mono)}
+.banner{display:flex;align-items:center;gap:14px;padding:20px 24px;border-radius:12px;margin:20px 0 8px;
+  border:1px solid var(--line);background:var(--card)}
+.banner.pass{border-color:#bfe3c8;background:var(--pass-bg)}
+.banner.fail{border-color:#f3c2c0;background:var(--fail-bg)}
+.verdict{font-size:22px;font-weight:700;letter-spacing:.4px}
+.banner.pass .verdict{color:var(--pass)}
+.banner.fail .verdict{color:var(--fail)}
+.banner .why{color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.card .k{font-size:12px;color:var(--muted);margin-bottom:6px}
+.card .v{font-size:20px;font-weight:650;font-family:var(--mono);letter-spacing:-.5px}
+.card .u{font-size:12px;color:var(--muted);font-weight:400;margin-left:2px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;overflow:hidden;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#fafbfc;font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.3px}
+tr:last-child td{border-bottom:none}
+td.num,th.num{font-family:var(--mono);white-space:nowrap}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:650;
+  font-family:var(--mono);letter-spacing:.3px}
+.tag.pass{color:var(--pass);background:var(--pass-bg)}
+.tag.fail{color:var(--fail);background:var(--fail-bg)}
+.tag.skip{color:var(--skip);background:var(--skip-bg)}
+.detail{color:var(--muted);font-size:13px}
+.mono{font-family:var(--mono);font-size:13px}
+.stage{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.stage:last-child{border-bottom:none}
+.stage .name{width:150px;flex:none;font-size:13px}
+.stage .bar{flex:1;height:8px;background:#eef0f3;border-radius:4px;overflow:hidden}
+.stage .bar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.stage .bar i.fail{background:var(--fail)}
+.stage .t{width:76px;flex:none;text-align:right;font-family:var(--mono);font-size:12px;color:var(--muted)}
+pre{background:#12161c;color:#d6dee8;padding:14px 16px;border-radius:10px;overflow:auto;
+  font-family:var(--mono);font-size:12.5px;line-height:1.55;max-height:340px}
+.meta{font-size:13px;color:var(--muted);font-family:var(--mono);line-height:1.9;
+  background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto}
+.meta b{color:var(--ink);font-weight:600}
+.advice{background:var(--accent-bg);border:1px solid #c9dcf3;border-radius:10px;padding:14px 18px;font-size:14px}
+.advice b{color:var(--accent)}
+footer{margin-top:40px;color:var(--muted);font-size:12px;text-align:center;font-family:var(--mono)}
+@media print{body{background:#fff}.card,table,.meta,.advice{border-color:#ccc}}
+</style></head><body><div class="wrap">
+<h1>飞行测试报告</h1>
+<div class="sub">20261106-180830-live · 模式 live · 2026-11-06 18:08:30</div>
+
+<div class="banner fail">
+  <div class="verdict">FAIL</div>
+  <div class="why">1 项断言失败；体检未通过：高度保持</div>
+</div><div class="cards"><div class="card"><div class="k">日志时长</div><div class="v">34.2<span class="u">s</span></div></div><div class="card"><div class="k">稳定悬停</div><div class="v">17.2<span class="u">s</span></div></div><div class="card"><div class="k">横滚 / 俯仰</div><div class="v">0.34 / 0.35<span class="u">°</span></div></div><div class="card"><div class="k">高度漂移</div><div class="v">0.51<span class="u">m</span></div></div><div class="card"><div class="k">悬停油门</div><div class="v">48.9<span class="u">%</span></div></div><div class="card"><div class="k">角速度峰值</div><div class="v">1.9<span class="u">°/s</span></div></div></div><h2>体检判定</h2><table><thead><tr><th>检查项</th><th>结论</th><th>实测 / 标准</th></tr></thead><tbody><tr><td>姿态稳定性</td><td><span class="tag pass">PASS</span></td><td class='detail'>roll ±0.34° pitch ±0.35° / 标准 ±1°</td></tr><tr><td>高度保持</td><td><span class="tag fail">FAIL</span></td><td class='detail'>漂移 0.51 m（均高 2.45 m）/ 标准 0.5 m</td></tr><tr><td>悬停油门</td><td><span class="tag pass">PASS</span></td><td class='detail'>均值 49.0% 峰值 50.6% / 标准 45%~55%</td></tr><tr><td>振动水平</td><td><span class="tag pass">PASS</span></td><td class='detail'>角速度峰值 2.0 °/s / 标准 30 °/s</td></tr><tr><td>系统消息</td><td><span class="tag pass">PASS</span></td><td class='detail'>ERROR 0 个 / WARNING 1 个</td></tr></tbody></table><h2>测试用例</h2><p class="detail">共 15 项：通过 13、失败 1、跳过 1，耗时 0.74s</p><table><thead><tr><th>用例</th><th>结果</th><th class='num'>耗时(s)</th><th>失败信息</th></tr></thead><tbody><tr><td class='mono'>test_tc001_hover_stability::test_hover_segment_exists[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.15</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc001_hover_stability::test_roll_stability[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc001_hover_stability::test_pitch_stability[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc001_hover_stability::test_altitude_hold[flight]</td><td><span class="tag fail">FAIL</span></td><td class='num'>0.0</td><td class='detail'>AssertionError: /Users/dafangwei/code/drone-lab/campaigns/20261106-180830-live/flight.ulg: 高度漂移 0.51 m（均高 2.45 m），超出标准 0.5 m。排查方向：气压计受气流干扰、定高环 I 过大导致过冲、或地效区悬停。
+assert np.float32(0.51174927) &lt;= 0.5
+[+2 more lines; full report in element text]</td></tr><tr><td class='mono'>test_tc002_throttle::test_throttle_in_range[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc002_throttle::test_throttle_peak_headroom[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc002_throttle::test_throttle_steady[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc003_vibration::test_gyro_peak[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc003_vibration::test_gyro_not_oscillating[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc004_sysmsg::test_no_error_messages[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc004_sysmsg::test_warnings_are_tracked[flight]</td><td><span class="tag skip">SKIP</span></td><td class='num'>0.0</td><td class='detail'>记录 1 条 WARNING（不判失败）：[&#x27;[logger] No log directories found to clean up&#x27;]</td></tr><tr><td class='mono'>test_tc005_log_integrity::test_required_topics_present[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc005_log_integrity::test_log_duration[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc005_log_integrity::test_attitude_sample_rate[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr><tr><td class='mono'>test_tc005_log_integrity::test_timestamps_monotonic[flight]</td><td><span class="tag pass">PASS</span></td><td class='num'>0.0</td><td class='detail'>—</td></tr></tbody></table><h2>排查建议</h2><div class="advice"><div style='margin-bottom:8px'><b>高度保持</b>：定高漂移先排除气压计/激光测距噪声，再看 MPC_Z 系列参数；若在室内仿真，确认 EKF 高度源与实际一致。</div><div style='margin-bottom:8px'><b>用例失败</b>：报告用例明细里的失败信息已附排查方向，先按方向定位，再决定是改代码还是改标准。</div></div><h2>流水线阶段</h2><div class="stage"><div class="name">启动 SITL</div><div class="bar"><i class="" style="width:12.4%"></i></div><div class="t">4.89s</div></div><div class="stage"><div class="name">飞行科目</div><div class="bar"><i class="" style="width:100.0%"></i></div><div class="t">39.48s</div></div><div class="stage"><div class="name">停止 SITL</div><div class="bar"><i class="" style="width:2.0%"></i></div><div class="t">0.00s</div></div><div class="stage"><div class="name">取本次日志</div><div class="bar"><i class="" style="width:2.0%"></i></div><div class="t">0.07s</div></div><div class="stage"><div class="name">日志测量</div><div class="bar"><i class="" style="width:2.0%"></i></div><div class="t">0.15s</div></div><div class="stage"><div class="name">执行测试用例</div><div class="bar"><i class="" style="width:7.7%"></i></div><div class="t">3.05s</div></div><div class="stage"><div class="name">生成报告</div><div class="bar"><i class="" style="width:2.0%"></i></div><div class="t">0.00s</div></div><p class="detail">阶段耗时按最长一段归一化，便于看出瓶颈。</p><h2>飞行科目</h2><table><thead><tr><th>放行检查</th><th>结论</th><th>说明</th></tr></thead><tbody><tr><td>科目参数</td><td><span class="tag pass">PASS</span></td><td class='detail'>目标高度 2.5m，包络上限 5.0m</td></tr><tr><td>可解锁</td><td><span class="tag pass">PASS</span></td><td class='detail'>is_armable=True</td></tr><tr><td>位置估计</td><td><span class="tag pass">PASS</span></td><td class='detail'>local_position_ok=True</td></tr><tr><td>Home 点</td><td><span class="tag pass">PASS</span></td><td class='detail'>home_position_ok=True</td></tr><tr><td>电量</td><td><span class="tag pass">PASS</span></td><td class='detail'>飞控未上报电量（仿真常见），跳过</td></tr><tr><td>飞行模式</td><td><span class="tag pass">PASS</span></td><td class='detail'>当前 HOLD</td></tr></tbody></table><div class="cards"><div class="card"><div class="k">起飞</div><div class="v">成功</div></div><div class="card"><div class="k">降落</div><div class="v">成功</div></div><div class="card"><div class="k">悬停目标</div><div class="v">25.0<span class="u">s</span></div></div><div class="card"><div class="k">悬停实际</div><div class="v">25.1<span class="u">s</span></div></div><div class="card"><div class="k">最大高度</div><div class="v">2.51<span class="u">m</span></div></div><div class="card"><div class="k">最大水平距离</div><div class="v">0.06<span class="u">m</span></div></div><div class="card"><div class="k">遥测样本</div><div class="v">50<span class="u">点</span></div></div></div><h2>飞控事件流</h2><pre>已连接 udpin://0.0.0.0:14540
+前置检查 科目参数: PASS (目标高度 2.5m，包络上限 5.0m)
+前置检查 可解锁: PASS (is_armable=True)
+前置检查 位置估计: PASS (local_position_ok=True)
+前置检查 Home 点: PASS (home_position_ok=True)
+前置检查 电量: PASS (飞控未上报电量（仿真常见），跳过)
+前置检查 飞行模式: PASS (当前 HOLD)
+[飞控] Armed by external command	
+已解锁
+[飞控] [logger] ./fs/log/2026-11-06/10_08_37.ulg	
+[飞控] Using default takeoff altitude: 2.5 m	
+[飞控] Takeoff detected	
+已离地，目标 2.5m
+[飞控] Landing at current position	
+[飞控] Landing detected	
+已落地
+[飞控] Disarmed by external command	</pre><h2>可追溯信息</h2><div class="meta"><div><b>日志文件</b>　campaigns/20261106-180830-live/flight.ulg</div><div><b>日志大小</b>　7.7 MB</div><div><b>日志 SHA256</b>　816f08fdd3520852</div><div><b>代码版本</b>　bbaeb44（有未提交改动）</div><div><b>运行模式</b>　live</div><div><b>SITL 机型</b>　sihsim_quadx</div><div><b>Python</b>　3.13.12</div><div><b>平台</b>　Darwin arm64</div><div><b>MAVSDK</b>　4.0.5</div><div><b>pytest</b>　9.2.0</div><div><b>生成时间</b>　2026-11-06 18:09:18</div></div><footer>drone-lab · 飞行测试流水线自动生成 · 退出码 1</footer>
+</div></body></html>

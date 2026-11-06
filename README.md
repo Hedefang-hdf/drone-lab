@@ -43,6 +43,19 @@ make ulog2html                # 产物在 reports/
 make test-go                  # Go 单测（含与 Python 数值基准的交叉验证）
 ```
 
+## 看得到的产物（不用装环境）
+
+不想配环境，也能直接看结果——下面三份都是仓库里现成的自包含 HTML，点开即读：
+
+| 产物 | 内容 |
+|---|---|
+| [`first-flight-report-original.html`](docs/artifacts/first-flight-report-original.html) | **首航原始报告**：SITL 自动起飞→悬停→降落，5 项体检 4 项 PASS，1 项 FAIL（高度漂移 0.51 m） |
+| [`first-flight-report-rejudged.html`](docs/artifacts/first-flight-report-rejudged.html) | **同一份日志重判**：修正度量口径后漂移 0.047 m，全部 PASS —— 标准一个字没动，改的是测量方式 |
+| [`ulog2html-sample-report.html`](docs/artifacts/ulog2html-sample-report.html) | **Go 版报告**：纯 Go 解析 .ulg，带手写 SVG 曲线，与 Python 版数值逐位一致 |
+
+> 这两份首航报告对照着看，就是一次完整的测试工程复盘：
+> **先怀疑标准，还是先怀疑测量？** 这一课的答案在 [`docs/artifacts/README.md`](docs/artifacts/README.md)。
+
 ## 核心设计：测量与判定分离
 
 ```

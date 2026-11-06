@@ -1,0 +1,197 @@
+{
+  "campaign_id": "20261106-203437-replay",
+  "mode": "replay",
+  "started_at": "2026-11-06 20:34:37",
+  "git": {
+    "sha": "e1c2c53",
+    "dirty": false
+  },
+  "env": {
+    "python": "3.13.12",
+    "platform": "Darwin arm64",
+    "mavsdk": null,
+    "pytest": "9.2.0"
+  },
+  "sitl_model": null,
+  "verdict": "PASS",
+  "exit_code": 0,
+  "finished_at": "2026-11-06 20:34:40",
+  "mission": null,
+  "log": {
+    "path": "/tmp/rejudge/flight.ulg",
+    "size_mb": 7.7,
+    "sha256": "816f08fdd3520852"
+  },
+  "metrics": {
+    "duration_s": 34.2,
+    "hover_found": true,
+    "hover_s": 12.2,
+    "hover_samples": 1529,
+    "roll_half_deg": 0.28,
+    "pitch_half_deg": 0.35,
+    "alt_drift_m": 0.04699999839067459,
+    "alt_mean_m": 2.490000009536743,
+    "throttle_mean": 0.4887999892234802,
+    "throttle_peak": 0.4970000088214874,
+    "gyro_peak_dps": 1.88,
+    "errors": [],
+    "warnings": [
+      "[logger] No log directories found to clean up"
+    ]
+  },
+  "checks": [
+    {
+      "name": "姿态稳定性",
+      "verdict": "PASS",
+      "detail": "roll ±0.28° pitch ±0.35° / 标准 ±1°"
+    },
+    {
+      "name": "高度保持",
+      "verdict": "PASS",
+      "detail": "漂移 0.05 m（均高 2.49 m）/ 标准 0.5 m"
+    },
+    {
+      "name": "悬停油门",
+      "verdict": "PASS",
+      "detail": "均值 48.9% 峰值 49.7% / 标准 45%~55%"
+    },
+    {
+      "name": "振动水平",
+      "verdict": "PASS",
+      "detail": "角速度峰值 1.9 °/s / 标准 30 °/s"
+    },
+    {
+      "name": "系统消息",
+      "verdict": "PASS",
+      "detail": "ERROR 0 个 / WARNING 1 个"
+    }
+  ],
+  "tests": {
+    "total": 15,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 1,
+    "duration_s": 0.61,
+    "cases": [
+      {
+        "name": "test_tc001_hover_stability::test_hover_segment_exists[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.16,
+        "message": ""
+      },
+      {
+        "name": "test_tc001_hover_stability::test_roll_stability[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc001_hover_stability::test_pitch_stability[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc001_hover_stability::test_altitude_hold[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc002_throttle::test_throttle_in_range[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc002_throttle::test_throttle_peak_headroom[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc002_throttle::test_throttle_steady[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc003_vibration::test_gyro_peak[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc003_vibration::test_gyro_not_oscillating[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc004_sysmsg::test_no_error_messages[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc004_sysmsg::test_warnings_are_tracked[flight]",
+        "outcome": "SKIP",
+        "duration_s": 0.0,
+        "message": "记录 1 条 WARNING（不判失败）：['[logger] No log directories found to clean up']"
+      },
+      {
+        "name": "test_tc005_log_integrity::test_required_topics_present[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc005_log_integrity::test_log_duration[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc005_log_integrity::test_attitude_sample_rate[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      },
+      {
+        "name": "test_tc005_log_integrity::test_timestamps_monotonic[flight]",
+        "outcome": "PASS",
+        "duration_s": 0.0,
+        "message": ""
+      }
+    ],
+    "exit_code": 0
+  },
+  "stages": [
+    {
+      "name": "加载日志",
+      "status": "OK",
+      "duration_s": 0.048,
+      "detail": ""
+    },
+    {
+      "name": "日志测量",
+      "status": "OK",
+      "duration_s": 0.169,
+      "detail": ""
+    },
+    {
+      "name": "执行测试用例",
+      "status": "OK",
+      "duration_s": 1.945,
+      "detail": ""
+    },
+    {
+      "name": "生成报告",
+      "status": "OK",
+      "duration_s": 0.027,
+      "detail": ""
+    }
+  ],
+  "advice": "",
+  "abort_reason": null
+}
