@@ -1,0 +1,4 @@
+# 运行环境：Python 3.10+
+# 安装：pip install -r requirements.txt
+pyulog>=1.0.0      # PX4 .ulg 日志解析（官方库）
+pytest>=8.0.0      # 测试框架
