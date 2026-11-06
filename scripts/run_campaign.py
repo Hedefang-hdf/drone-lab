@@ -51,8 +51,11 @@ if str(ROOT) not in sys.path:
 
 from pytools import htmlreport                      # noqa: E402
 from pytools.flightdata import FlightData           # noqa: E402
-from pytools.mission import HoverMission, SafetyEnvelope  # noqa: E402
 from pytools.sitl import SitlConfig, SitlProcess, find_running_sitl  # noqa: E402
+
+# 注意：MAVSDK 相关的导入放在 fly_live() 里懒加载。
+# replay 模式（含 CI）不需要装 MAVSDK——编排器不该为了"可能用不到的功能"
+# 把整个依赖树强加给所有调用方。
 
 # 失败项 → 排查方向。报告里不写"请检查"，要写到"调哪个参数"。
 ADVICE = {
@@ -200,6 +203,13 @@ def run_pytest(log_path: Path, out_dir: Path) -> dict:
 
 def fly_live(args, out_dir: Path, stages: list[dict], sitl: SitlProcess) -> dict:
     """跑飞行科目，返回 mission 字典。SITL 的启动/关闭由调用方负责。"""
+    try:
+        from pytools.mission import HoverMission, SafetyEnvelope
+    except ImportError:
+        raise SystemExit(
+            "live 模式需要 MAVSDK：pip install -r requirements-live.txt\n"
+            "（replay 模式不需要，见 --replay）")
+
     mission = HoverMission(
         address=args.address,
         alt_m=args.alt,
