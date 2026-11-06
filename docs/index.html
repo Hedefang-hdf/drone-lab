@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>drone-lab · 无人机飞行测试实验室</title>
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#1b1f24; --muted:#6a737d; --line:#e3e6ea;
+  --pass:#1a7f37; --pass-bg:#e9f6ec; --fail:#c9252d; --fail-bg:#fdeceb;
+  --accent:#0b5cad; --accent-bg:#eaf2fc;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.65 -apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC",sans-serif;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:56px 24px 80px}
+header{margin-bottom:40px}
+h1{font-size:30px;letter-spacing:-.3px;margin:0 0 10px}
+.sub{color:var(--muted);font-size:15px;margin:0}
+.sub b{color:var(--ink);font-weight:600}
+h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin:44px 0 14px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:18px 20px;margin-bottom:12px;text-decoration:none;color:inherit;
+  transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.card .t{font-weight:600;font-size:16px;margin-bottom:5px;display:flex;align-items:center;gap:10px}
+.card .d{color:var(--muted);font-size:13.5px;line-height:1.6}
+.card .f{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:8px;opacity:.8}
+.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;letter-spacing:.02em}
+.tag.ok{color:var(--pass);background:var(--pass-bg)}
+.tag.ng{color:var(--fail);background:var(--fail-bg)}
+.tag.new{color:var(--accent);background:var(--accent-bg)}
+ul.notes{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+ul.notes li{background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:12px 16px;font-size:14px;display:flex;justify-content:space-between;gap:16px}
+ul.notes li span{color:var(--muted);font-size:13px;text-align:right}
+.note{background:var(--accent-bg);border:1px solid #cfe0f5;border-radius:10px;
+  padding:16px 20px;font-size:14px;color:#22303f;margin-top:16px}
+.note b{color:var(--accent)}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
+  color:var(--muted);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+code{font-family:var(--mono);font-size:.9em;background:#eef1f4;padding:1px 5px;border-radius:4px}
+</style></head>
+<body><div class="wrap">
+
+<header>
+  <h1>drone-lab · 无人机飞行测试实验室</h1>
+  <p class="sub">用软件测试的方法学无人机：<b>每一次仿真飞行都有测试用例，每一条飞行日志都有体检报告，每一个判读标准都写成了断言。</b></p>
+</header>
+
+<h2>可以直接打开的报告</h2>
+
+<a class="card" href="artifacts/first-flight-report-original.html">
+  <div class="t">首航报告 · 真实 SITL 飞行 <span class="tag ng">1 项 FAIL</span></div>
+  <div class="d">MAVSDK 自动起飞 → 悬停 25 秒 → 降落，全程无人干预。悬停油门、姿态、振动、系统消息全部 PASS；高度漂移 0.51 m，超标准 0.5 m 仅 2 cm。</div>
+  <div class="f">first-flight-report-original.html</div>
+</a>
+
+<a class="card" href="artifacts/first-flight-report-rejudged.html">
+  <div class="t">同一份日志 · 重判 <span class="tag ok">全部 PASS</span></div>
+  <div class="d">查清那 2 cm 不是漂移而是定高收敛，修正测量口径后重判：漂移 0.047 m。<b>标准一个字没动，改的是测量方式。</b></div>
+  <div class="f">first-flight-report-rejudged.html</div>
+</a>
+
+<a class="card" href="artifacts/ulog2html-sample-report.html">
+  <div class="t">日志体检报告 · Go 版 <span class="tag ok">PASS</span> <span class="tag new">交叉验证</span></div>
+  <div class="d">纯 Go 手写 ULog 二进制解析器直接出 HTML，含手写 SVG 曲线。9 项指标与 Python（pyulog）实现逐位一致——两套独立实现互证协议理解正确。</div>
+  <div class="f">ulog2html-sample-report.html</div>
+</a>
+
+<div class="note">
+  <b>先怀疑标准，还是先怀疑测量？</b> 首航那 1 项 FAIL 最后的结论是：标准是对的，测量口径错了。
+  把「悬停窗口」里前 5 秒的定高收敛段算进了漂移，才得出 0.51 m。跳过收敛段后同一份日志是 0.047 m。
+  改标准能让测试变绿，但它掩盖问题；改测量能让测试变准，它暴露问题。
+  完整复盘见 <code>docs/artifacts/README.md</code>。
+</div>
+
+<h2>工程笔记</h2>
+<ul class="notes">
+  <li>ulog 判读方法<span>判读标准从哪来、为什么是 ±1°</span></li>
+  <li>pytest 飞行回归测试<span>日志即测试数据，一条日志 15 条断言</span></li>
+  <li>ULog 二进制格式 · Go 实现<span>padding 不落盘、msg_id 由文件指定等 4 个坑</span></li>
+  <li>自动化飞行测试流水线<span>首航抓出的 4 个真问题</span></li>
+  <li>PID 四环串级<span>控制链笔记</span></li>
+  <li>SITL 搭建踩坑<span>编译、机型、就绪判定</span></li>
+</ul>
+
+<footer>
+  <span>Hedefang · 2026</span>
+  <span>源码：<code>github.com/Hedefang-hdf/drone-lab</code></span>
+</footer>
+
+</div></body></html>
