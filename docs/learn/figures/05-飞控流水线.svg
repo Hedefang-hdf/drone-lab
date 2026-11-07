@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 240" width="100%" role="img">
+<title>飞控由感知、估计、控制、执行四道工序组成并形成闭环</title>
+<desc>方框依次为传感器、状态估计、控制器、混控执行，最下方一条返回箭头表示机体运动后被传感器重新测量，形成每秒数百次的闭环。</desc>
+
+<rect x="0" y="0" width="680" height="240" fill="#ffffff"/>
+<text x="340" y="32" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#1f2328">飞控不是一块芯片，是四道工序，转得飞快</text>
+
+<rect x="40" y="76" width="130" height="56" rx="8" fill="#ddf4ff" stroke="#0969da" stroke-width="1"/>
+<text x="105" y="98" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">① 传感器</text>
+<text x="105" y="117" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#57606a">测到什么</text>
+
+<rect x="200" y="76" width="130" height="56" rx="8" fill="#fbefff" stroke="#8250df" stroke-width="1"/>
+<text x="265" y="98" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">② 状态估计</text>
+<text x="265" y="117" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#57606a">我在哪、什么姿势</text>
+
+<rect x="360" y="76" width="130" height="56" rx="8" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+<text x="425" y="98" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">③ 控制器</text>
+<text x="425" y="117" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#57606a">该怎么动</text>
+
+<rect x="520" y="76" width="110" height="56" rx="8" fill="#fff1e5" stroke="#bc4c00" stroke-width="1"/>
+<text x="575" y="98" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#1f2328">④ 混控执行</text>
+<text x="575" y="117" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#57606a">四个电机给多少</text>
+
+<line x1="174" y1="104" x2="194" y2="104" stroke="#57606a" stroke-width="1.5" marker-end="url(#ar4)"/>
+<line x1="334" y1="104" x2="354" y2="104" stroke="#57606a" stroke-width="1.5" marker-end="url(#ar4)"/>
+<line x1="494" y1="104" x2="514" y2="104" stroke="#57606a" stroke-width="1.5" marker-end="url(#ar4)"/>
+
+<path d="M575 132 L575 186 L105 186 L105 140" fill="none" stroke="#cf222e" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#ar4r)"/>
+
+<text x="340" y="212" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#57606a">闭环：机身动了 → 传感器重新测 → 再算一遍。这一圈每秒转几百次</text>
+
+<defs>
+<marker id="ar4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#57606a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+<marker id="ar4r" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#cf222e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+</svg>

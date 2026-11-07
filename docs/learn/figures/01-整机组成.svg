@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 330" width="100%" role="img">
+<title>一台四旋翼由十样东西组成</title>
+<desc>左侧列出机架、电机、螺旋桨、电调、电池、飞控板、传感器组、GPS 模块、云台相机、天线共十个部件，箭头指向右侧组装完成的四旋翼整机。</desc>
+
+<rect x="0" y="0" width="680" height="330" fill="#ffffff"/>
+
+<text x="340" y="30" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#1f2328">一架四旋翼，拆到底就是这十样东西</text>
+
+<rect x="40" y="60" width="108" height="42" rx="6" fill="#f5f7fa" stroke="#d8dee6" stroke-width="1"/>
+<text x="94" y="81" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">机架（机体）</text>
+
+<rect x="40" y="108" width="108" height="42" rx="6" fill="#ddf4ff" stroke="#0969da" stroke-width="1"/>
+<text x="94" y="129" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">无刷电机</text>
+
+<rect x="40" y="156" width="108" height="42" rx="6" fill="#ddf4ff" stroke="#0969da" stroke-width="1"/>
+<text x="94" y="177" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">螺旋桨</text>
+
+<rect x="40" y="204" width="108" height="42" rx="6" fill="#ddf4ff" stroke="#0969da" stroke-width="1"/>
+<text x="94" y="225" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">电调（ESC）</text>
+
+<rect x="40" y="252" width="108" height="42" rx="6" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+<text x="94" y="273" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">电池</text>
+
+<rect x="156" y="60" width="108" height="42" rx="6" fill="#fbefff" stroke="#8250df" stroke-width="1"/>
+<text x="210" y="81" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">飞控板</text>
+
+<rect x="156" y="108" width="108" height="42" rx="6" fill="#fbefff" stroke="#8250df" stroke-width="1"/>
+<text x="210" y="129" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">传感器组</text>
+
+<rect x="156" y="156" width="108" height="42" rx="6" fill="#fff1e5" stroke="#bc4c00" stroke-width="1"/>
+<text x="210" y="177" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">GPS 模块</text>
+
+<rect x="156" y="204" width="108" height="42" rx="6" fill="#ffebe9" stroke="#cf222e" stroke-width="1"/>
+<text x="210" y="225" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">云台相机</text>
+
+<rect x="156" y="252" width="108" height="42" rx="6" fill="#fff1e5" stroke="#bc4c00" stroke-width="1"/>
+<text x="210" y="273" text-anchor="middle" dominant-baseline="central" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#1f2328">天线</text>
+
+<line x1="282" y1="177" x2="322" y2="177" stroke="#57606a" stroke-width="1.5" marker-end="url(#a1)"/>
+<defs>
+<marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#57606a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<text x="302" y="165" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#57606a">装起来</text>
+
+<line x1="490" y1="152" x2="426" y2="112" stroke="#8c959f" stroke-width="2"/>
+<line x1="490" y1="152" x2="554" y2="112" stroke="#8c959f" stroke-width="2"/>
+<line x1="490" y1="200" x2="426" y2="240" stroke="#8c959f" stroke-width="2"/>
+<line x1="490" y1="200" x2="554" y2="240" stroke="#8c959f" stroke-width="2"/>
+
+<circle cx="426" cy="112" r="38" fill="#ddf4ff" fill-opacity="0.45" stroke="#0969da" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="554" cy="112" r="38" fill="#ddf4ff" fill-opacity="0.45" stroke="#0969da" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="426" cy="240" r="38" fill="#ddf4ff" fill-opacity="0.45" stroke="#0969da" stroke-width="1" stroke-dasharray="3 3"/>
+<circle cx="554" cy="240" r="38" fill="#ddf4ff" fill-opacity="0.45" stroke="#0969da" stroke-width="1" stroke-dasharray="3 3"/>
+
+<circle cx="426" cy="112" r="11" fill="#0969da"/>
+<circle cx="554" cy="112" r="11" fill="#0969da"/>
+<circle cx="426" cy="240" r="11" fill="#0969da"/>
+<circle cx="554" cy="240" r="11" fill="#0969da"/>
+
+<rect x="466" y="146" width="48" height="60" rx="14" fill="#fbefff" stroke="#8250df" stroke-width="1.5"/>
+<rect x="484" y="200" width="12" height="14" rx="3" fill="#ffebe9" stroke="#cf222e" stroke-width="1"/>
+<circle cx="490" cy="176" r="7" fill="#dafbe1" stroke="#1a7f37" stroke-width="1"/>
+<line x1="514" y1="152" x2="524" y2="132" stroke="#bc4c00" stroke-width="1.5"/>
+
+<text x="490" y="272" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#1f2328">一台能飞的四旋翼</text>
+<text x="490" y="292" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#57606a">虚线圆＝螺旋桨扫过的范围</text>
+</svg>

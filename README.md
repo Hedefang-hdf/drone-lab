@@ -17,6 +17,7 @@
 | [`flytests/`](flytests/) | **飞行测试用例库**：5 组 TC 用例，pytest 断言 = 飞行的回归测试 |
 | [`pytools/`](pytools/) | 日志数据层（`flightdata.py`）+ 体检报告生成（`ulog_report.py`） |
 | [`gotools/`](gotools/) | **Go 工具**：纯 Go 解析 .ulg → 单文件 HTML 报告（零依赖二进制，见 [`docs/ulog-二进制格式-Go实现.md`](docs/ulog-二进制格式-Go实现.md)） |
+| [`docs/learn/`](docs/learn/) | **零基础入门读物**：[从零认识无人机](docs/learn/01-从零认识无人机.md)，13 节 7 张图，配 20 题自测。先看图再看字 |
 | [`docs/`](docs/) | 学习笔记 + 设计说明：SITL 踩坑、PID 原理、日志判读、pytest 设计 |
 | [`data/`](data/) | 真实飞行日志样例（PX4 SITL 悬停，36 秒） |
 | [`scripts/`](scripts/) | 编排器：无人值守飞行测试流水线 `run_campaign.py` + 负向验证脚本 |
@@ -58,6 +59,13 @@ make test-go                  # Go 单测（含与 Python 数值基准的交叉�
 
 > 这两份首航报告对照着看，就是一次完整的测试工程复盘：
 > **先怀疑标准，还是先怀疑测量？** 这一课的答案在 [`docs/artifacts/README.md`](docs/artifacts/README.md)。
+
+## 新手从这里开始
+
+不清楚无人机由什么组成、为什么能飞、断链了会怎样？先读 **[从零认识无人机](docs/learn/01-从零认识无人机.md)**。
+
+13 节 · 7 张手写 SVG 配图 · 20 题自测，不需要航空背景。**先看图，再看字**，每节图打头，读完 2 小时。
+在 VS Code 里打开按 `Cmd+Shift+V` 就能边读边看图，不用装插件。
 
 ## 核心设计：测量与判定分离
 
